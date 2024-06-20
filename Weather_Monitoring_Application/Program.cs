@@ -10,6 +10,7 @@ namespace Weather_Monitoring_Application
     // Purpose: Initialize and start threads for each sensor to simulate concurrent data collection.
     internal class Program
     {
+        
         static void Main(string[] args)
         {
             // make an object for canecling threads
@@ -27,6 +28,7 @@ namespace Weather_Monitoring_Application
             Thread humThread = new Thread(() => humiditySensor.CollectData(cts.Token)); // Thread for humidity sensor
             Thread pressThread = new Thread(() => pressureSensor.CollectData(cts.Token)); // Thread for pressure sensor
 
+            
             // Start the threads
 
             tempThread.Start(); // Temperature thread started
@@ -43,7 +45,7 @@ namespace Weather_Monitoring_Application
             tempThread.Join();
             humThread.Join();
             pressThread.Join();
-
+            
         }
     }
 }
