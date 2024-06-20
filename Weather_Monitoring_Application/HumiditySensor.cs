@@ -35,8 +35,8 @@ namespace Weather_Monitoring_Application
                 // Log the data
                 LogData(humidity.ToString("F2") + "%\n");
 
-                // Collect data every one second
-                Thread.Sleep(1000);
+                // Collect data every five second
+                Thread.Sleep(5000);
             }
         }
     }
