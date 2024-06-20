@@ -15,6 +15,9 @@ namespace Weather_Monitoring_Application
         double MINIMUM_TEMPERATURE = -15.00;
         double MAXIMUM_TEMPERATURE = 40.00;
 
+        // Create a random object
+        Random random = new Random();
+
 
         // constructer
         public TemperatureSensor()
@@ -25,9 +28,6 @@ namespace Weather_Monitoring_Application
         // Colect and display data.
         public override void CollectData()
         {
-            // Create a random object
-            Random random = new Random();
-
             while (true)
             {
                 // generate a random temperature data (Simulating as if real time data)
@@ -37,7 +37,7 @@ namespace Weather_Monitoring_Application
                 // Log the data
                 LogData(temperature.ToString("F2") + "°C");
 
-                // Collect data every 1 second
+                // Collect data every one second
                 Thread.Sleep(1000);
             }
         }
