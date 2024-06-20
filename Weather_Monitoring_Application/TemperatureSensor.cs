@@ -35,7 +35,7 @@ namespace Weather_Monitoring_Application
                 double temperature = MINIMUM_TEMPERATURE + ( randomValue * ( MAXIMUM_TEMPERATURE - MINIMUM_TEMPERATURE ) ); // make the temperature value using the random value and max and min values.
 
                 // Log the data
-                LogData(temperature.ToString("F2") + "°C");
+                LogData(temperature.ToString("F2") + "°C\n");
 
                 // Collect data every one second
                 Thread.Sleep(1000);

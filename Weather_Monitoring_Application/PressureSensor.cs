@@ -33,7 +33,7 @@ namespace Weather_Monitoring_Application
                 double pressure = MINIMUM_PRESSURE + (randomValue * (MAXIMUM_PRESSURE - MINIMUM_PRESSURE)); // Make the temperature value using the random value and max and min values.
 
                 // Log the data
-                LogData(pressure.ToString("F2") + "%");
+                LogData(pressure.ToString("F2") + "kPa\n");
 
                 // Collect data every one second
                 Thread.Sleep(1000);

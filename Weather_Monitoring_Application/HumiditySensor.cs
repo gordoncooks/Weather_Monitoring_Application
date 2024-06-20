@@ -33,7 +33,7 @@ namespace Weather_Monitoring_Application
                 double humidity = MINIMUM_HUMIDITY + (randomValue * (MAXIMUM_HUMIDITY - MINIMUM_HUMIDITY)); // Make the temperature value using the random value and max and min values.
 
                 // Log the data
-                LogData(humidity.ToString("F2") + "%");
+                LogData(humidity.ToString("F2") + "%\n");
 
                 // Collect data every one second
                 Thread.Sleep(1000);
