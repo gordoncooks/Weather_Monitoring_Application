@@ -26,15 +26,18 @@ namespace Weather_Monitoring_Application
         // Collect and display data
         public override void CollectData()
         {
-            // Generate a random humidity data (Simulating as if real time data)
-            double randomValue = random.NextDouble(); // makes the randum value
-            double humidity = MINIMUM_HUMIDITY + (randomValue * (MAXIMUM_HUMIDITY - MINIMUM_HUMIDITY)); // Make the temperature value using the random value and max and min values.
+            while (true)
+            {
+                // Generate a random humidity data (Simulating as if real time data)
+                double randomValue = random.NextDouble(); // makes the randum value
+                double humidity = MINIMUM_HUMIDITY + (randomValue * (MAXIMUM_HUMIDITY - MINIMUM_HUMIDITY)); // Make the temperature value using the random value and max and min values.
 
-            // Log the data
-            LogData(humidity.ToString("F2") + "%");
+                // Log the data
+                LogData(humidity.ToString("F2") + "%");
 
-            // Collect data every one second
-            Thread.Sleep(1000);
+                // Collect data every one second
+                Thread.Sleep(1000);
+            }
         }
     }
 }
