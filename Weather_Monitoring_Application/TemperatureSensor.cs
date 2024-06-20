@@ -22,6 +22,7 @@ namespace Weather_Monitoring_Application
             sensorType = "Temperature";
         }
 
+        // Colect and display data.
         public override void CollectData()
         {
             // Create a random object
@@ -33,6 +34,8 @@ namespace Weather_Monitoring_Application
                 double randomValue = random.NextDouble(); // makes the randum value
                 double temperature = MINIMUM_TEMPERATURE + ( randomValue * ( MAXIMUM_TEMPERATURE - MINIMUM_TEMPERATURE ) ); // make the temperature value using the random value and max and min values.
 
+                // Log the data
+                LogData(temperature.ToString("F2") + "°C");
 
                 // Collect data every 1 second
                 Thread.Sleep(1000);
