@@ -12,23 +12,38 @@ namespace Weather_Monitoring_Application
     {
         static void Main(string[] args)
         {
+            // make an object for canecling threads
+            CancellationTokenSource cts = new CancellationTokenSource();
+
             // Create a instance for each sensor
-            
+
             TemperatureSensor temperatureSensor = new TemperatureSensor(); // Instance of TemperatureSensor
             HumiditySensor humiditySensor = new HumiditySensor(); // Instance of HumiditySensor
             PressureSensor pressureSensor = new PressureSensor(); // Instance of PressureSensor
 
             // Create threads
 
-            Thread tempThread = new Thread(new ThreadStart(temperatureSensor.CollectData)); // Thread for temperature sensor
-            Thread humThread = new Thread(new ThreadStart(humiditySensor.CollectData)); // Thread for humidity sensor
-            Thread pressThread = new Thread(new ThreadStart(pressureSensor.CollectData)); // Thread for pressure sensor
+            Thread tempThread = new Thread(() => temperatureSensor.CollectData(cts.Token));  // Thread for temperature sensor
+            Thread humThread = new Thread(() => humiditySensor.CollectData(cts.Token)); // Thread for humidity sensor
+            Thread pressThread = new Thread(() => pressureSensor.CollectData(cts.Token)); // Thread for pressure sensor
 
             // Start the threads
 
             tempThread.Start(); // Temperature thread started
             humThread.Start(); // Humidity thread started
             pressThread.Start(); // Pressure thread started
+
+            // Add a wait time beofre stopping threads
+            Thread.Sleep(10000);
+
+            // Request cancelations
+            cts.Cancel();
+
+            // Ensure the threads has finished
+            tempThread.Join();
+            humThread.Join();
+            pressThread.Join();
+
         }
     }
 }

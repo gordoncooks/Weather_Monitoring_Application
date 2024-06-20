@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Weather_Monitoring_Application
@@ -14,7 +15,7 @@ namespace Weather_Monitoring_Application
         public string sensorType { get; set; }
 
         // colect the data and log it
-        public abstract void CollectData();
+        public abstract void CollectData(CancellationToken token);
 
         // Log the data to the terminal
         protected void LogData(string data)

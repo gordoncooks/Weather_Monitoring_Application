@@ -26,9 +26,9 @@ namespace Weather_Monitoring_Application
         }
 
         // Colect and display data.
-        public override void CollectData()
+        public override void CollectData(CancellationToken token)
         {
-            while (true)
+            while (!token.IsCancellationRequested)
             {
                 // generate a random temperature data (Simulating as if real time data)
                 double randomValue = random.NextDouble(); // makes the randum value

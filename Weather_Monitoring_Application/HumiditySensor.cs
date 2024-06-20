@@ -24,9 +24,9 @@ namespace Weather_Monitoring_Application
         Random random = new Random();
 
         // Collect and display data
-        public override void CollectData()
+        public override void CollectData(CancellationToken token)
         {
-            while (true)
+            while (!token.IsCancellationRequested)
             {
                 // Generate a random humidity data (Simulating as if real time data)
                 double randomValue = random.NextDouble(); // makes the randum value
